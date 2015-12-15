@@ -2,7 +2,7 @@
 
 A Cake Addin for [Azure Storage](https://msdn.microsoft.com/en-us/library/azure/mt163683.aspx).
 
-[![Build status](https://ci.appveyor.com/api/projects/status/?svg=true)]()
+[![Build status](https://ci.appveyor.com/api/projects/status/1kphu06mh49fpw9e?svg=true)](https://ci.appveyor.com/project/RadioSystems/cake-azurestorage)
 
 [![cakebuild.net](https://img.shields.io/badge/WWW-cakebuild.net-blue.svg)](http://cakebuild.net/)
 
