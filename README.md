@@ -23,18 +23,14 @@ To use the addin just add it to Cake call the aliases and configure any settings
 // How to package with no settings
 Task("PackageNoSettings")
 	.Does(() => {
-		Squirrel(GetFile("Package.nupkg");
+     var settings = new AzureSettings();
+     settings.AccountName = "AccountName";
+     settings.Key = "API KEY";
+     settings.ContainerName = "ContainerName";
+     settings.BlobName = "BlobName";
+	   UploadFileToBlog(settings, GetFile("./path/to/file/to/upload"));
 	)};
 
-// How to package with the settings
-Task("PackageWithSettings")
-	.Does(() => {
-		var settings = new SquirrelSettings();
-		settings.NoMsi = true;
-		settings.Silent = true;
-
-		Squirrel(GetFile("Package.nupkg", settings);
-	)};
 ```
 
 Thats it.
