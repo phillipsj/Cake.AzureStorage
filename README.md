@@ -23,7 +23,7 @@ To use the addin just add it to Cake call the aliases and configure any settings
 // How to package with no settings
 Task("PackageNoSettings")
 	.Does(() => {
-     var settings = new AzureSettings();
+     var settings = new AzureStorageSettings();
      settings.AccountName = "AccountName";
      settings.Key = "API KEY";
      settings.ContainerName = "ContainerName";
