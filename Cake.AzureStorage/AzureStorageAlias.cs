@@ -7,7 +7,6 @@ namespace Cake.AzureStorage {
     [CakeAliasCategory("AzureStorage")]
     public static class AzureStorageAlias {
         [CakeMethodAlias]
-        [CakeNamespaceImport("Microsoft.WindowsAzure")]
         public static void UploadFileToBlob(this ICakeContext context, AzureStorageSettings settings, FilePath fileToUpload) {
             if (context == null) {
                 throw new ArgumentNullException(nameof(context));
