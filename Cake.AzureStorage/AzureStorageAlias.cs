@@ -13,5 +13,13 @@ namespace Cake.AzureStorage {
             }
             AzureStorage.UploadFileToBlob(settings, fileToUpload);
         }
+
+        [CakeMethodAlias]
+        public static void DeleteBlob(this ICakeContext context, AzureStorageSettings settings) {
+            if (context == null) {
+                throw new ArgumentNullException(nameof(context));
+            }
+            AzureStorage.DeleteBlob(settings);
+        }
     }
 }
