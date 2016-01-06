@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Cake.Core.IO;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace Cake.AzureStorage {
     /// <summary>
@@ -69,17 +71,13 @@ namespace Cake.AzureStorage {
         /// Deletes an Azure blob from Azure Storage using a prefix to determine which blobs to delete, prefix = BlobName
         /// </summary>
         /// <param name="settings">Azure Storage Settings</param>
-        public static void DeleteBlobsByPrefix(AzureStorageSettings settings) {
+        public static  IEnumerable<IListBlobItem> DeleteBlobsByPrefix(AzureStorageSettings settings) {
             CheckSettings(settings);
             var storageAccount = new CloudStorageAccount(new StorageCredentials(settings.AccountName, settings.Key), true);
             var blobClient = storageAccount.CreateCloudBlobClient();
             var container = blobClient.GetContainerReference(settings.ContainerName);
 
-            var blobs = container.ListBlobs(settings.BlobName);
-            foreach (var blob in blobs) {
-                var blobReference = container.GetBlockBlobReference(blob.Uri.ToString());
-                blobReference.Delete();
-            }
+            return container.ListBlobs(settings.BlobName);
         }
 
     }
