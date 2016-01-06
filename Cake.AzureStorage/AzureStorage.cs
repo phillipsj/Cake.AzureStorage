@@ -77,14 +77,14 @@ namespace Cake.AzureStorage {
             var blobClient = storageAccount.CreateCloudBlobClient();
             var container = blobClient.GetContainerReference(settings.ContainerName);
 
-            var messages = new List<String>();
+            var messages = new List<string>();
 
             var blobs = container.ListBlobs(settings.BlobName);
             foreach (var blob in blobs) {
                 var cloudBlob = new CloudBlob(blob.Uri);
                 var blobReference = container.GetBlobReference(cloudBlob.Name);
                 blobReference.Delete();
-                messages.Add(cloudBlob.Name + "has been told to delete by reference.");
+                messages.Add(cloudBlob.Name + " has been told to delete by reference.");
             }
 
             return messages;
