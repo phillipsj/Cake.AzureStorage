@@ -77,7 +77,7 @@ namespace Cake.AzureStorage {
 
             var blobs = container.ListBlobs(settings.BlobName);
 
-            foreach (var blob in blobs.Select(x => container.GetBlobReference(x.Uri.ToString()))) {
+            foreach (var blob in blobs.Select(x => container.GetBlockBlobReference(x.Uri.ToString()))) {
                 blob.Delete();
             }
         }
