@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Cake.Core;
 using Cake.Core.Annotations;
 using Cake.Core.IO;
@@ -23,11 +24,11 @@ namespace Cake.AzureStorage {
         }
 
         [CakeMethodAlias]
-        public static void DeleteBlobsByPrefix(this ICakeContext context, AzureStorageSettings settings) {
+        public static IEnumerable<string> DeleteBlobsByPrefix(this ICakeContext context, AzureStorageSettings settings) {
             if (context == null) {
                 throw new ArgumentNullException(nameof(context));
             }
-            AzureStorage.DeleteBlobsByPrefix(settings);
+            return AzureStorage.DeleteBlobsByPrefix(settings);
         }
     }
 }
