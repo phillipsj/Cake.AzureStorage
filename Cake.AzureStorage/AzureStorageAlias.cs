@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using Cake.Core;
 using Cake.Core.Annotations;
 using Cake.Core.IO;
-using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace Cake.AzureStorage {
     [CakeAliasCategory("AzureStorage")]
@@ -25,11 +23,11 @@ namespace Cake.AzureStorage {
         }
 
         [CakeMethodAlias]
-        public static IEnumerable<IListBlobItem> DeleteBlobsByPrefix(this ICakeContext context, AzureStorageSettings settings) {
+        public static void DeleteBlobsByPrefix(this ICakeContext context, AzureStorageSettings settings) {
             if (context == null) {
                 throw new ArgumentNullException(nameof(context));
             }
-            return AzureStorage.DeleteBlobsByPrefix(settings);
+            AzureStorage.DeleteBlobsByPrefix(settings);
         }
     }
 }
