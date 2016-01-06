@@ -21,5 +21,13 @@ namespace Cake.AzureStorage {
             }
             AzureStorage.DeleteBlob(settings);
         }
+
+        [CakeMethodAlias]
+        public static void DeleteBlobsByPrefix(this ICakeContext context, AzureStorageSettings settings) {
+            if (context == null) {
+                throw new ArgumentNullException(nameof(context));
+            }
+            AzureStorage.DeleteBlobsByPrefix(settings);
+        }
     }
 }
