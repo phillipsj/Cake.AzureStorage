@@ -65,8 +65,8 @@ Task("PackageAfterMultiDelete")
 	});
 ```
 
-The Prefix used for deleting blobs is exactly like it sounds, a prefix of the file you want to delete. So if you have files named like ABC-ImportantFile-1.0.0.1.exe, ABC-ImportantFile-1.0.0.2.exe, ABC-ImportantFile-1.0.0.3.exe, etc. You can delete these by specifying "ABC-ImportantFile-" as your blob name and it will get all files staring with that string. 
+The Prefix used for deleting blobs is exactly like it sounds, a prefix of the file you want to delete. So if you have files named ABC-ImportantFile-1.0.0.1.exe, ABC-ImportantFile-1.0.0.2.exe, ABC-ImportantFile-1.0.0.3.exe, etc. You can delete these by specifying "ABC-ImportantFile-" as your blob name and it will get all files starting with that string. 
 
-Thats it.
+That's it.
 
 Hope you enjoy using.
