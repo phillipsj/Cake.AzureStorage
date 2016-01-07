@@ -10,7 +10,7 @@ A Cake Addin for [Azure Storage](https://msdn.microsoft.com/en-us/library/azure/
 
 ## Functionality
 
-Supports uploading Blobs to Azure Storage, more features to come shortly.
+Supports uploading Blobs to Azure Blob Storage as well as deleting them by prefix and by name. More features to be added in the future.
 
 ## Usage
 
@@ -28,10 +28,44 @@ Task("PackageNoSettings")
      settings.Key = "API KEY";
      settings.ContainerName = "ContainerName";
      settings.BlobName = "BlobName";
-	   UploadFileToBlog(settings, GetFile("./path/to/file/to/upload"));
+	   UploadFileToBlob(settings, GetFile("./path/to/file/to/upload"));
 	)};
 
+
+Task("PackageAfterDelete")
+	.Does(() => {
+		var settings = new AzureStorageSettings();
+		settings.AccountName = "AccountName";
+		settings.Key = "API KEY";
+		settings.ContainerName = "ContainerName";
+		settings.BlobName = "NameToDelete";
+		DeleteBlob(settings);
+	
+		settings.BlobName = "NameToUploadAs";
+		var filePath = new FilePath("./location/of/file/to/upload");
+		UploadFileToBlob(settings, filePath);
+	});
+
+Task("PackageAfterMultiDelete")
+	.Does(() => {
+		var settings = new AzureStorageSettings();
+		settings.AccountName = "AccountName";
+		settings.Key = "API KEY";
+		settings.ContainerName = "ContainerName";
+		settings.BlobName = "PrefixToSearchBy";
+		
+		var deletedLog = DeleteBlobsByPrefix(settings);
+		foreach (var line in deletedLog){
+			Information(line);
+		}
+		
+		settings.BlobName = "NameToUploadAs";
+		var filePath = new FilePath("./location/of/file/to/upload");
+		UploadFileToBlob(settings, filePath);
+	});
 ```
+
+The Prefix used for deleting blobs is exactly like it sounds, a prefix of the file you want to delete. So if you have files named like ABC-ImportantFile-1.0.0.1.exe, ABC-ImportantFile-1.0.0.2.exe, ABC-ImportantFile-1.0.0.3.exe, etc. You can delete these by specifying "ABC-ImportantFile-" as your blob name and it will get all files staring with that string. 
 
 Thats it.
 
