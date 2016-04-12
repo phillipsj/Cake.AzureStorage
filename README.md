@@ -17,7 +17,7 @@ Supports uploading Blobs to Azure Blob Storage as well as deleting them by prefi
 To use the addin just add it to Cake call the aliases and configure any settings you want.
 
 ```csharp
-#addin Cake.AzureStorage
+#addin "Cake.AzureStorage"
 ...
 
 // How to package with no settings
@@ -29,7 +29,7 @@ Task("PackageNoSettings")
      settings.ContainerName = "ContainerName";
      settings.BlobName = "BlobName";
 	   UploadFileToBlob(settings, GetFile("./path/to/file/to/upload"));
-	)};
+	});
 
 
 Task("PackageAfterDelete")
