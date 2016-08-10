@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using Cake.Core.IO;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
@@ -20,19 +18,19 @@ namespace Cake.AzureStorage {
             }
             if (string.IsNullOrEmpty(settings.AccountName))
             {
-                throw new ArgumentNullException("account name", "Account name is null.");
+                throw new ArgumentNullException(nameof(settings.AccountName), "Account name is null.");
             }
             if (string.IsNullOrEmpty(settings.Key))
             {
-                throw new ArgumentNullException("key", "Key is null.");
+                throw new ArgumentNullException(nameof(settings.Key), "Key is null.");
             }
             if (string.IsNullOrEmpty(settings.ContainerName))
             {
-                throw new ArgumentNullException("container name", "Container name is null.");
+                throw new ArgumentNullException(nameof(settings.ContainerName), "Container name is null.");
             }
             if (string.IsNullOrEmpty(settings.BlobName))
             {
-                throw new ArgumentNullException("blob name", "Blob name is null.");
+                throw new ArgumentNullException(nameof(settings.BlobName), "Blob name is null.");
             }
         }
         /// <summary>
@@ -51,7 +49,7 @@ namespace Cake.AzureStorage {
             var blobClient = storageAccount.CreateCloudBlobClient();
             var container = blobClient.GetContainerReference(settings.ContainerName);
             var block = container.GetBlockBlobReference(settings.BlobName);
-            block.UploadFromFile(fileToUpload.FullPath, FileMode.Open);
+            block.UploadFromFile(fileToUpload.FullPath);
         }
         /// <summary>
         /// Deletes an Azure blob from Azure Storage
@@ -88,9 +86,6 @@ namespace Cake.AzureStorage {
             }
 
             return messages;
-
-
         }
-
     }
 }
