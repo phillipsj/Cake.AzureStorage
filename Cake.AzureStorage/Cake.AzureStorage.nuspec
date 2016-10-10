@@ -13,4 +13,7 @@
     <copyright>Copyright 2015</copyright>
     <tags>Azure Storage Cake</tags>
   </metadata>
+  <dependencies>
+    <dependency id="WindowsAzure.Storage" version="7.2.1" />
+  </dependencies>
 </package>
