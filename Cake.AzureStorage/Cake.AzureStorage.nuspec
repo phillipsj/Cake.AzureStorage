@@ -20,6 +20,6 @@
     </references>
   </metadata>
   <files>
-    <file src="*\Microsoft.WindowsAzure.Storage.dll" target="lib\net45"/>
+    <file src="*\*\Microsoft.WindowsAzure.Storage.dll" target="lib\net45"/>
   </files>
 </package>
