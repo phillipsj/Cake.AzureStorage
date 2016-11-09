@@ -15,11 +15,8 @@
     <dependencies>
       <dependency id="WindowsAzure.Storage" version="7.2.1" />
     </dependencies>
-    <references>
-      <reference file="Microsoft.WindowsAzure.Storage.dll"/>
-    </references>
   </metadata>
   <files>
-    <file src="*\*\Microsoft.WindowsAzure.Storage.dll" target="lib\net45"/>
+    <file src="*\*\Microsoft.WindowsAzure.Storage.dll" target="lib/net45"/>
   </files>
 </package>
