@@ -16,7 +16,7 @@
     <files>
         <file src="*\*\Microsoft.WindowsAzure.Storage.dll" target="lib/net45"/>
         <file src="*\*\Microsoft.Data.OData.dll" target="lib/net45"/>
-        <file src="*\*\Microsoft.Date.Edm.dll" target="lib/net45"/>
+        <file src="*\*\Microsoft.Data.Edm.dll" target="lib/net45"/>
         <file src="*\*\Microsoft.Data.Services.Client.dll" target="lib/net45"/>
         <file src="*\*\Microsoft.Azure.KeyVault.Core.dll" target="lib/net45"/>
         <file src="*\*\System.Spatial.dll" target="lib/net45"/>
