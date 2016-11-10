@@ -1,22 +1,25 @@
 <?xml version="1.0"?>
 <package >
-  <metadata>
-    <id>$id$</id>
-    <version>$version$</version>
-    <title>$title$</title>
-    <authors>$author$</authors>
-    <owners>$author$</owners>
-    <licenseUrl>https://github.com/RadioSystems/Cake.AzureStorage/blob/master/LICENSE.md</licenseUrl>
-    <projectUrl>https://github.com/RadioSystems/Cake.AzureStorage</projectUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>$description$</description>
-    <copyright>Copyright 2015</copyright>
-    <tags>Azure Storage Cake</tags>
-    <dependencies>
-      <dependency id="WindowsAzure.Storage" version="7.2.1" />
-    </dependencies>
-  </metadata>
-  <files>
-    <file src="*\*\Microsoft.WindowsAzure.Storage.dll" target="lib/net45"/>
-  </files>
+    <metadata>
+        <id>$id$</id>
+        <version>$version$</version>
+        <title>$title$</title>
+        <authors>$author$</authors>
+        <owners>$author$</owners>
+        <licenseUrl>https://github.com/RadioSystems/Cake.AzureStorage/blob/master/LICENSE.md</licenseUrl>
+        <projectUrl>https://github.com/RadioSystems/Cake.AzureStorage</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>$description$</description>
+        <copyright>Copyright 2015</copyright>
+        <tags>Azure Storage Cake</tags>
+    </metadata>
+    <files>
+        <file src="*\*\Microsoft.WindowsAzure.Storage.dll" target="lib/net45"/>
+        <file src="*\*\Microsoft.Data.OData.dll" target="lib/net45"/>
+        <file src="*\*\Microsoft.Date.Edm.dll" target="lib/net45"/>
+        <file src="*\*\Microsoft.Data.Services.Client.dll" target="lib/net45"/>
+        <file src="*\*\Microsoft.Azure.KeyVault.Core.dll" target="lib/net45"/>
+        <file src="*\*\System.Spatial.dll" target="lib/net45"/>
+        <file src="*\*\Newtonsoft.Json.dll" target="lib/net45"/>
+    </files>
 </package>
