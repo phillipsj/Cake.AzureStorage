@@ -1,35 +1,20 @@
 <?xml version="1.0"?>
 <package >
     <metadata>
-        <id>$id$</id>
+        <id>Cake.AzureStorage</id>
         <version>$version$</version>
-        <title>$title$</title>
-        <authors>$author$</authors>
-        <owners>$author$</owners>
+        <title>Cake.AzureStorage</title>
+        <authors>Radio Systems Corporation</authors>
+        <owners>Radio Systems Corporation</owners>
         <licenseUrl>https://github.com/RadioSystems/Cake.AzureStorage/blob/master/LICENSE.md</licenseUrl>
         <projectUrl>https://github.com/RadioSystems/Cake.AzureStorage</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>$description$</description>
-        <copyright>Copyright 2015</copyright>
+        <description>Cake Addin for working with Azure Storage</description>
+        <copyright>Copyright 2016</copyright>
         <tags>Azure Storage Cake</tags>
     </metadata>
     <files>
-        <file src="*\*\Cake.AzureStorage.dll.config" target="lib/net45"/>
-        <file src="*\*\Cake.Core.dll" target="lib/net45"/>
-        <file src="*\*\Cake.Core.xml" target="lib/net45"/>
-        <file src="*\*\Microsoft.WindowsAzure.Storage.dll" target="lib/net45"/>
-        <file src="*\*\Microsoft.WindowsAzure.Storage.xml" target="lib/net45"/>
-        <file src="*\*\Microsoft.Data.OData.dll" target="lib/net45"/>
-        <file src="*\*\Microsoft.Data.OData.xml" target="lib/net45"/>
-        <file src="*\*\Microsoft.Data.Edm.dll" target="lib/net45"/>
-        <file src="*\*\Microsoft.Data.Edm.xml" target="lib/net45"/>
-        <file src="*\*\Microsoft.Data.Services.Client.dll" target="lib/net45"/>
-        <file src="*\*\Microsoft.Data.Services.Client.xml" target="lib/net45"/>
-        <file src="*\*\Microsoft.Azure.KeyVault.Core.dll" target="lib/net45"/>
-        <file src="*\*\Microsoft.Azure.KeyVault.Core.xml" target="lib/net45"/>
-        <file src="*\*\System.Spatial.dll" target="lib/net45"/>
-        <file src="*\*\System.Spatial.xml" target="lib/net45"/>
-        <file src="*\*\Newtonsoft.Json.dll" target="lib/net45"/>
-        <file src="*\*\Newtonsoft.Json.xml" target="lib/net45"/>
+        <file src="Cake.AzureStorage.dll" target="lib/net45"/>
+        <file src="Cake.AzureStorage.XML" target="lib/net45"/>
     </files>
 </package>
