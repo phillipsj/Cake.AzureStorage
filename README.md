@@ -4,6 +4,8 @@ A Cake Addin for [Azure Storage](https://msdn.microsoft.com/en-us/library/azure/
 
 [![Build status](https://ci.appveyor.com/api/projects/status/1kphu06mh49fpw9e?svg=true)](https://ci.appveyor.com/project/RadioSystems/cake-azurestorage)
 
+[!Develop MyGet Build Status](https://www.myget.org/BuildSource/Badge/cake-azure-storage?identifier=8bc9fc41-15fa-49bb-9872-82f198fa7566)](https://www.myget.org/)
+
 [![cakebuild.net](https://img.shields.io/badge/WWW-cakebuild.net-blue.svg)](http://cakebuild.net/)
 
 [![Join the chat at https://gitter.im/cake-build/cake](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/cake-build/cake?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)

@@ -1,4 +1,4 @@
-
+#tool "nuget:?package=ilmerge"
 //////////////////////////////////////////////////////////////////////
 // ARGUMENTS
 //////////////////////////////////////////////////////////////////////
@@ -12,7 +12,7 @@ var configuration = Argument("configuration", "Release");
 
 // Define directories.
 var buildDir = Directory("./Cake.AzureStorage/bin") + Directory(configuration);
-
+var assemblyInfo = ParseAssemblyInfo("./Cake.AzureStorage/Properties/AssemblyInfo.cs");
 //////////////////////////////////////////////////////////////////////
 // TASKS
 //////////////////////////////////////////////////////////////////////
@@ -46,12 +46,34 @@ Task("Run-Unit-Tests")
     
 });
 
+Task("ILMerge")
+    .IsDependentOn("Run-Unit-Tests")
+    .Does(()=> {
+        var assemblyPaths = GetFiles(buildDir.ToString() + "/*.dll");
+        //ILMerge(buildDir.ToString() + "/Cake.AzureStorage.All.dll", buildDir.ToString() + "/Cake.AzureStorage.dll", assemblyPaths);
+    });
+
+Task("Create-NuGet-Package")
+    .IsDependentOn("Run-Unit-Tests")
+    .Does(()=> {
+        var versionNumber = assemblyInfo.AssemblyVersion;
+        if(MyGet.IsRunningOnMyGet) {
+            versionNumber = versionNumber + "-beta";
+        }
+        var settings = new NuGetPackSettings(){
+            Version = versionNumber,
+            BasePath = buildDir.ToString()           
+        };
+        NuGetPack("./Cake.AzureStorage/Cake.AzureStorage.nuspec", settings);
+    });
+
+
 //////////////////////////////////////////////////////////////////////
 // TASK TARGETS
 //////////////////////////////////////////////////////////////////////
 
 Task("Default")
-    .IsDependentOn("Run-Unit-Tests");
+    .IsDependentOn("Create-NuGet-Package");
 
 //////////////////////////////////////////////////////////////////////
 // EXECUTION

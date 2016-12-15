@@ -27,6 +27,9 @@
         /// </value>
         public bool UseHttps { get; set; }
 
+        /// <summary>
+        /// The constructor.
+        /// </summary>
         public AzureStorageSettings() {
             UseHttps = true;
         }
