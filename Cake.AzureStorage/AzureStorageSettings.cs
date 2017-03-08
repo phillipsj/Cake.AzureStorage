@@ -4,6 +4,10 @@
     /// </summary>
     public class AzureStorageSettings {
         /// <summary>
+        /// Gets or sets the Use Local Emulator option.
+        /// </summary>
+        public bool UseLocal { get; set; }
+        /// <summary>
         /// Gets or sets the Azure account name.
         /// </summary>
         public string AccountName { get; set; }
