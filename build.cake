@@ -46,13 +46,6 @@ Task("Run-Unit-Tests")
     
 });
 
-Task("ILMerge")
-    .IsDependentOn("Run-Unit-Tests")
-    .Does(()=> {
-        var assemblyPaths = GetFiles(buildDir.ToString() + "/*.dll");
-        //ILMerge(buildDir.ToString() + "/Cake.AzureStorage.All.dll", buildDir.ToString() + "/Cake.AzureStorage.dll", assemblyPaths);
-    });
-
 Task("Create-NuGet-Package")
     .IsDependentOn("Run-Unit-Tests")
     .Does(()=> {

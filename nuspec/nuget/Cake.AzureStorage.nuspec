@@ -10,7 +10,7 @@
         <projectUrl>https://github.com/RadioSystems/Cake.AzureStorage</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Cake Addin for working with Azure Storage</description>
-        <copyright>Copyright 2016</copyright>
+        <copyright>Copyright (c) Radio Systems Corporation 2017 - Present</copyright>
         <tags>Azure Storage Cake</tags>
     </metadata>
     <files>
