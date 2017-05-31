@@ -2,14 +2,14 @@
 <package >
     <metadata>
         <id>Cake.AzureStorage</id>
-        <version>$version$</version>
+        <version>0.0.0</version>
         <title>Cake.AzureStorage</title>
         <authors>Radio Systems Corporation</authors>
         <owners>Radio Systems Corporation</owners>
         <licenseUrl>https://github.com/RadioSystems/Cake.AzureStorage/blob/master/LICENSE.md</licenseUrl>
         <projectUrl>https://github.com/RadioSystems/Cake.AzureStorage</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>Cake Addin for working with Azure Storage</description>
+        <description>Cake Addin for working with Azure Storage.</description>
         <copyright>Copyright (c) Radio Systems Corporation 2017 - Present</copyright>
         <tags>Azure Storage Cake</tags>
     </metadata>
