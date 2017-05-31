@@ -1,0 +1,13 @@
+mode: ContinuousDelivery
+branches:
+  releases?[/-]:
+    mode: ContinuousDeployment
+    tag: rc
+  dev(elop)?(ment)?$:
+    mode: ContinuousDeployment
+    tag: alpha
+  hotfix(es)?[/-]:
+    mode: ContinuousDeployment
+    tag: beta
+ignore:
+  sha: []
