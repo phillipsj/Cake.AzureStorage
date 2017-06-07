@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Cake.Core;
 using Cake.Core.Annotations;
 using Cake.Core.IO;
@@ -16,13 +17,13 @@ namespace Cake.AzureStorage {
         /// <example>
         /// <code>
         /// Task("PackageNoSettings")
-        ///  .Does(() => {
+        ///  .Does(async () => {
         ///   var settings = new AzureStorageSettings();
         ///   settings.AccountName = "AccountName";
         ///   settings.Key = "API KEY";
         ///   settings.ContainerName = "ContainerName";
         ///   settings.BlobName = "BlobName";
-        ///   UploadFileToBlob(settings, GetFile("./path/to/file/to/upload"));
+        ///   await UploadFileToBlobAsync(settings, GetFile("./path/to/file/to/upload"));
         /// });
         /// </code>
         /// </example>
@@ -30,11 +31,11 @@ namespace Cake.AzureStorage {
         /// <param name="settings">Azure Storage Settings.</param>
         /// <param name="fileToUpload">File to upload to Azure storage.</param>
         [CakeMethodAlias]
-        public static void UploadFileToBlob(this ICakeContext context, AzureStorageSettings settings, FilePath fileToUpload) {
+        public static Task UploadFileToBlob(this ICakeContext context, AzureStorageSettings settings, FilePath fileToUpload) {
             if (context == null) {
                 throw new ArgumentNullException(nameof(context));
             }
-            AzureStorage.UploadFileToBlob(settings, fileToUpload);
+            return AzureStorage.UploadFileToBlobAsync(settings, fileToUpload);
         }
 
         /// <summary>
@@ -59,12 +60,13 @@ namespace Cake.AzureStorage {
         /// </example>
         /// <param name="context">The context.</param>
         /// <param name="settings">Azure Storage Settings.</param>
+        /// <returns>Task with bool telling whether delete operation went well.</returns>
         [CakeMethodAlias]
-        public static void DeleteBlob(this ICakeContext context, AzureStorageSettings settings) {
+        public static Task<bool> DeleteBlob(this ICakeContext context, AzureStorageSettings settings) {
             if (context == null) {
                 throw new ArgumentNullException(nameof(context));
             }
-            AzureStorage.DeleteBlob(settings);
+            return AzureStorage.DeleteBlobAsync(settings);
         }
 
         /// <summary>
@@ -73,33 +75,33 @@ namespace Cake.AzureStorage {
         /// <example>
         /// <code>
         /// Task("PackageAfterDelete")
-        ///  .Does(() => {
+        ///  .Does(async () => {
         ///   var settings = new AzureStorageSettings();
         ///   settings.AccountName = "AccountName";
         ///   settings.Key = "API KEY";
         ///   settings.ContainerName = "ContainerName";
         ///   settings.BlobName = "PrefixToSearchBy";
         /// 
-        ///   var deletedLog = DeleteBlobsByPrefix(settings);
+        ///   var deletedLog = await DeleteBlobsByPrefixAsync(settings);
         ///   foreach (var line in deletedLog){
         ///     Information(line);
         ///   }
         ///   
         ///   settings.BlobName = "NameToUploadAs";
         ///   var filePath = new FilePath("./location/of/file/to/upload");
-        ///   UploadFileToBlob(settings, filePath));
+        ///   await UploadFileToBlobAsync(settings, filePath));
         /// });
         /// </code>
         /// </example>
         /// <param name="context">The context.</param>
         /// <param name="settings">Azure Storage Settings.</param>
-        /// <returns></returns>
+        /// <returns><see cref="IEnumerable{T}"/> of <see cref="string"/> containing log of blobs deleted.</returns>
         [CakeMethodAlias]
-        public static IEnumerable<string> DeleteBlobsByPrefix(this ICakeContext context, AzureStorageSettings settings) {
+        public static Task<IEnumerable<string>> DeleteBlobsByPrefixAsync(this ICakeContext context, AzureStorageSettings settings) {
             if (context == null) {
                 throw new ArgumentNullException(nameof(context));
             }
-            return AzureStorage.DeleteBlobsByPrefix(settings);
+            return AzureStorage.DeleteBlobsByPrefixAsync(settings);
         }
     }
 }
