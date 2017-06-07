@@ -14,7 +14,6 @@
         <tags>Azure Storage Cake</tags>
     </metadata>
     <files>
-        <file src="Cake.AzureStorage.dll" target="lib/net45"/>
-        <file src="Cake.AzureStorage.XML" target="lib/net45"/>
+        <file src="Cake.AzureStorage.*" target="lib/netstandard1.6"/>
     </files>
 </package>
