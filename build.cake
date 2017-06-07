@@ -12,6 +12,7 @@ var configuration = Argument("configuration", "Release");
 
 // Define directories.
 var buildDir = Directory("./Cake.AzureStorage/bin") + Directory(configuration) + Directory("netstandard1.6");
+var artifacts = Directory("./artifacts");
 //////////////////////////////////////////////////////////////////////
 // TASKS
 //////////////////////////////////////////////////////////////////////
@@ -20,6 +21,7 @@ Task("Clean")
     .Does(() =>
 {
     CleanDirectory(buildDir);
+	CleanDirectory(artifacts);
 });
 
 Task("Restore-NuGet-Packages")
@@ -46,9 +48,11 @@ Task("Build")
 	.IsDependentOn("GitVersion")
     .Does(() =>
 {
-      // Use MSBuild
-      MSBuild("./Cake.AzureStorage.sln", settings =>
-        settings.SetConfiguration(configuration));
+	// Use MSBuild
+	MSBuild("./Cake.AzureStorage.sln", settings =>
+	settings.SetConfiguration(configuration));
+
+	CopyFiles(buildDir.ToString() + "/*", artifacts);
 });
 
 Task("Run-Unit-Tests")
@@ -67,13 +71,38 @@ Task("ILMerge")
 
 Task("Create-NuGet-Package")
     .IsDependentOn("Run-Unit-Tests")
-    .Does(()=> {
-        var settings = new NuGetPackSettings(){
-            Version = versionInfo.NuGetVersion,
-            BasePath = buildDir.ToString()           
-        };
-        NuGetPack("./Cake.AzureStorage.nuspec", settings);
-    });
+    .Does(() => 
+{
+    var nugetContent = new List<NuSpecContent>();
+    foreach(var file in GetFiles(buildDir.ToString() + "/*")) {
+		var content = new NuSpecContent {
+			Target = "lib/netstandard1.6",
+			Source = file.ToString()
+		};
+
+        nugetContent.Add(content);
+
+		Information("{0} - {1}", content.Source, content.Target);
+    }
+
+    var settings = new NuGetPackSettings() {
+        Id = "Cake.AzureStorage",
+        Title = "Cake.AzureStorage",
+        Authors = new [] { "Radio Systems Corporation" },
+		Owners = new [] { "Radio Systems Corporation" },
+        Copyright = "Copyright (c) 2016 Radio Systems Corporation",
+        Description = "Cake Addin for working with Azure Storage",
+        Tags = new [] {"azure", "storage", "cake"},
+        ProjectUrl = new Uri("https://github.com/RadioSystems/Cake.AzureStorage"),
+		LicenseUrl = new Uri("https://github.com/RadioSystems/Cake.AzureStorage/blob/master/LICENSE.md"),
+        Version = versionInfo.NuGetVersion,
+        Files = nugetContent,
+        RequireLicenseAcceptance = false,
+        OutputDirectory = artifacts
+    };
+
+    NuGetPack(settings);
+});
 
 
 //////////////////////////////////////////////////////////////////////
