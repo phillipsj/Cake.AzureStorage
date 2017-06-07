@@ -1,4 +1,4 @@
-#tool "nuget:?package=ilmerge"
+#tool "nuget:?package=GitVersion.CommandLine"
 //////////////////////////////////////////////////////////////////////
 // ARGUMENTS
 //////////////////////////////////////////////////////////////////////
@@ -11,8 +11,7 @@ var configuration = Argument("configuration", "Release");
 //////////////////////////////////////////////////////////////////////
 
 // Define directories.
-var buildDir = Directory("./Cake.AzureStorage/bin") + Directory(configuration);
-var assemblyInfo = ParseAssemblyInfo("./Cake.AzureStorage/Properties/AssemblyInfo.cs");
+var buildDir = Directory("./Cake.AzureStorage/bin") + Directory(configuration) + Directory("netstandard1.6");
 //////////////////////////////////////////////////////////////////////
 // TASKS
 //////////////////////////////////////////////////////////////////////
@@ -30,8 +29,21 @@ Task("Restore-NuGet-Packages")
     NuGetRestore("./Cake.AzureStorage.sln");
 });
 
+GitVersion versionInfo;
+Task("GitVersion")
+	.IsDependentOn("Restore-NuGet-Packages")
+	.Does(() => 
+{
+	versionInfo = GitVersion(new GitVersionSettings {
+		UpdateAssemblyInfo = true,
+		OutputType = GitVersionOutput.Json
+	});
+
+	Information("GitVersion -> {0}", versionInfo.FullSemVer);
+});
+
 Task("Build")
-    .IsDependentOn("Restore-NuGet-Packages")
+	.IsDependentOn("GitVersion")
     .Does(() =>
 {
       // Use MSBuild
@@ -56,15 +68,11 @@ Task("ILMerge")
 Task("Create-NuGet-Package")
     .IsDependentOn("Run-Unit-Tests")
     .Does(()=> {
-        var versionNumber = assemblyInfo.AssemblyVersion;
-        if(MyGet.IsRunningOnMyGet) {
-            versionNumber = versionNumber + "-beta";
-        }
         var settings = new NuGetPackSettings(){
-            Version = versionNumber,
+            Version = versionInfo.NuGetVersion,
             BasePath = buildDir.ToString()           
         };
-        NuGetPack("./Cake.AzureStorage/Cake.AzureStorage.nuspec", settings);
+        NuGetPack("./Cake.AzureStorage.nuspec", settings);
     });
 
 
