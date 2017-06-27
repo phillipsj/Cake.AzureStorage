@@ -8,6 +8,7 @@
         <owners>Radio Systems Corporation</owners>
         <licenseUrl>https://github.com/RadioSystems/Cake.AzureStorage/blob/master/LICENSE.md</licenseUrl>
         <projectUrl>https://github.com/RadioSystems/Cake.AzureStorage</projectUrl>
+        <iconUrl>https://cdn.rawgit.com/cake-contrib/graphics/a5cf0f881c390650144b2243ae551d5b9f836196/png/cake-contrib-medium.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Cake Addin for working with Azure Storage.</description>
         <copyright>Copyright (c) Radio Systems Corporation 2017 - Present</copyright>
