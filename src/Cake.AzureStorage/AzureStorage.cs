@@ -5,7 +5,8 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
 
-namespace Cake.AzureStorage {
+namespace Cake.AzureStorage
+{
     /// <summary>
     /// Azure Storage Client for Cake.
     /// </summary>
