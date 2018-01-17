@@ -33,6 +33,19 @@ Task("PackageNoSettings")
 	   UploadFileToBlob(settings, GetFile("./path/to/file/to/upload"));
 	});
 
+// How to specify blob content type if necessary
+Task("PackageSpecifyContentType")
+	.Does(() => {
+     var settings = new AzureStorageSettings();
+     settings.AccountName = "AccountName";
+     settings.Key = "API KEY";
+     settings.ContainerName = "ContainerName";
+     settings.BlobName = "BlobName";
+	 settings.ContentType = "image/jpeg";
+	   UploadFileToBlob(settings, GetFile("./path/to/file/to/upload"));
+	});
+
+
 
 Task("PackageAfterDelete")
 	.Does(() => {

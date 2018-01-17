@@ -54,6 +54,11 @@ namespace Cake.AzureStorage
             var blobClient = storageAccount.CreateCloudBlobClient();
             var container = blobClient.GetContainerReference(settings.ContainerName);
             var block = container.GetBlockBlobReference(settings.BlobName);
+            
+            if (!string.IsNullOrEmpty(settings.ContentType)) {
+                block.Properties.ContentType = settings.ContentType;
+            }
+            
             block.UploadFromFile(fileToUpload.FullPath);
         }
         /// <summary>
