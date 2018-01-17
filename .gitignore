@@ -71,3 +71,4 @@ packages
 # Windows
 Thumbs.db
 tools
+src/.idea/
