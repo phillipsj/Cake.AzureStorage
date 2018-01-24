@@ -6,6 +6,8 @@
 [Pp]ackages/
 /[Bb]uild/
 *.sln.ide/
+.idea
+.vs
 
 # Build related
 build-results/
