@@ -4,7 +4,7 @@ A Cake Addin for [Azure Storage](https://msdn.microsoft.com/en-us/library/azure/
 
 [![Build status](https://ci.appveyor.com/api/projects/status/1kphu06mh49fpw9e?svg=true)](https://ci.appveyor.com/project/RadioSystems/cake-azurestorage)
 
-[!Develop MyGet Build Status](https://www.myget.org/BuildSource/Badge/cake-azure-storage?identifier=8bc9fc41-15fa-49bb-9872-82f198fa7566)](https://www.myget.org/)
+[![Develop MyGet Build Status](https://www.myget.org/BuildSource/Badge/cake-azure-storage?identifier=8bc9fc41-15fa-49bb-9872-82f198fa7566)](https://www.myget.org/)
 
 [![cakebuild.net](https://img.shields.io/badge/WWW-cakebuild.net-blue.svg)](http://cakebuild.net/)
 
@@ -32,6 +32,19 @@ Task("PackageNoSettings")
      settings.BlobName = "BlobName";
 	   UploadFileToBlob(settings, GetFile("./path/to/file/to/upload"));
 	});
+
+// How to specify blob content type if necessary
+Task("PackageSpecifyContentType")
+	.Does(() => {
+     var settings = new AzureStorageSettings();
+     settings.AccountName = "AccountName";
+     settings.Key = "API KEY";
+     settings.ContainerName = "ContainerName";
+     settings.BlobName = "BlobName";
+	 settings.ContentType = "image/jpeg";
+	   UploadFileToBlob(settings, GetFile("./path/to/file/to/upload"));
+	});
+
 
 
 Task("PackageAfterDelete")

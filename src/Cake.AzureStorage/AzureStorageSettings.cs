@@ -4,6 +4,10 @@
     /// </summary>
     public class AzureStorageSettings {
         /// <summary>
+        /// Gets or sets the Use Local Emulator option.
+        /// </summary>
+        public bool UseLocal { get; set; }
+        /// <summary>
         /// Gets or sets the Azure account name.
         /// </summary>
         public string AccountName { get; set; }
@@ -26,7 +30,14 @@
         ///     <c>true</c> to use HTTPS, default; otherwise, <c>false</c>.
         /// </value>
         public bool UseHttps { get; set; }
-
+        /// <summary>
+        /// Gets or sets the content type property of the blob, 
+        /// </summary>
+        /// <value>
+        ///     set to content type if desired, examples: video/mp4, image/jpeg, application/json
+        /// </value>
+        public string ContentType { get; set; }
+        
         /// <summary>
         /// The constructor.
         /// </summary>

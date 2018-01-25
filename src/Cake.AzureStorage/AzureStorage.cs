@@ -5,7 +5,8 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
 
-namespace Cake.AzureStorage {
+namespace Cake.AzureStorage
+{
     /// <summary>
     /// Azure Storage Client for Cake.
     /// </summary>
@@ -15,6 +16,10 @@ namespace Cake.AzureStorage {
             if (settings == null)
             {
                 throw new ArgumentNullException(nameof(settings), "Settings are null");
+            }
+            if (settings.UseLocal)
+            {
+                return;
             }
             if (string.IsNullOrEmpty(settings.AccountName))
             {
@@ -44,11 +49,16 @@ namespace Cake.AzureStorage {
             {
                 throw new ArgumentNullException(nameof(fileToUpload), "File to upload is null.");
             }
-            var storageAccount = new CloudStorageAccount(new StorageCredentials(settings.AccountName, settings.Key), true);
+            var storageAccount = GetStorageAccount(settings);
 
             var blobClient = storageAccount.CreateCloudBlobClient();
             var container = blobClient.GetContainerReference(settings.ContainerName);
             var block = container.GetBlockBlobReference(settings.BlobName);
+            
+            if (!string.IsNullOrEmpty(settings.ContentType)) {
+                block.Properties.ContentType = settings.ContentType;
+            }
+            
             block.UploadFromFile(fileToUpload.FullPath);
         }
         /// <summary>
@@ -57,7 +67,7 @@ namespace Cake.AzureStorage {
         /// <param name="settings">Azure Storage Settings</param>
         public static void DeleteBlob(AzureStorageSettings settings) {
             CheckSettings(settings);
-            var storageAccount = new CloudStorageAccount(new StorageCredentials(settings.AccountName, settings.Key), true);
+            var storageAccount = GetStorageAccount(settings);
 
             var blobClient = storageAccount.CreateCloudBlobClient();
             var container = blobClient.GetContainerReference(settings.ContainerName);
@@ -71,7 +81,7 @@ namespace Cake.AzureStorage {
         /// <param name="settings">Azure Storage Settings</param>
         public static IEnumerable<string> DeleteBlobsByPrefix(AzureStorageSettings settings) {
             CheckSettings(settings);
-            var storageAccount = new CloudStorageAccount(new StorageCredentials(settings.AccountName, settings.Key), true);
+            var storageAccount = GetStorageAccount(settings);
             var blobClient = storageAccount.CreateCloudBlobClient();
             var container = blobClient.GetContainerReference(settings.ContainerName);
 
@@ -86,6 +96,12 @@ namespace Cake.AzureStorage {
             }
 
             return messages;
+        }
+
+        private static CloudStorageAccount GetStorageAccount(AzureStorageSettings settings) {
+            return settings.UseLocal ? 
+                CloudStorageAccount.DevelopmentStorageAccount : 
+                new CloudStorageAccount(new StorageCredentials(settings.AccountName, settings.Key), true);
         }
     }
 }
