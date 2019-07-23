@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.AzureStorage", "Cake.AzureStorage\Cake.AzureStorage.csproj", "{686E9167-5B86-42BD-ACB1-1700E3149F0B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.AzureStorage", "Cake.AzureStorage\Cake.AzureStorage.csproj", "{EB302A25-BA11-47FE-9A8E-93487D25E280}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.AzureStorage.Tests", "Cake.AzureStorage.Tests\Cake.AzureStorage.Tests.csproj", "{07AA1BE8-21B0-477C-A0C9-4571919B55CB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.AzureStorage.Tests", "Cake.AzureStorage.Tests\Cake.AzureStorage.Tests.csproj", "{F49FB33D-417D-4E7A-8FA7-7FA9A110222C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,22 +15,22 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{686E9167-5B86-42BD-ACB1-1700E3149F0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{686E9167-5B86-42BD-ACB1-1700E3149F0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{686E9167-5B86-42BD-ACB1-1700E3149F0B}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{686E9167-5B86-42BD-ACB1-1700E3149F0B}.Debug|x64.Build.0 = Debug|Any CPU
-		{686E9167-5B86-42BD-ACB1-1700E3149F0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{686E9167-5B86-42BD-ACB1-1700E3149F0B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{686E9167-5B86-42BD-ACB1-1700E3149F0B}.Release|x64.ActiveCfg = Release|Any CPU
-		{686E9167-5B86-42BD-ACB1-1700E3149F0B}.Release|x64.Build.0 = Release|Any CPU
-		{07AA1BE8-21B0-477C-A0C9-4571919B55CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{07AA1BE8-21B0-477C-A0C9-4571919B55CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{07AA1BE8-21B0-477C-A0C9-4571919B55CB}.Debug|x64.ActiveCfg = Debug|x64
-		{07AA1BE8-21B0-477C-A0C9-4571919B55CB}.Debug|x64.Build.0 = Debug|x64
-		{07AA1BE8-21B0-477C-A0C9-4571919B55CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{07AA1BE8-21B0-477C-A0C9-4571919B55CB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{07AA1BE8-21B0-477C-A0C9-4571919B55CB}.Release|x64.ActiveCfg = Release|x64
-		{07AA1BE8-21B0-477C-A0C9-4571919B55CB}.Release|x64.Build.0 = Release|x64
+		{EB302A25-BA11-47FE-9A8E-93487D25E280}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB302A25-BA11-47FE-9A8E-93487D25E280}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB302A25-BA11-47FE-9A8E-93487D25E280}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EB302A25-BA11-47FE-9A8E-93487D25E280}.Debug|x64.Build.0 = Debug|Any CPU
+		{EB302A25-BA11-47FE-9A8E-93487D25E280}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB302A25-BA11-47FE-9A8E-93487D25E280}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB302A25-BA11-47FE-9A8E-93487D25E280}.Release|x64.ActiveCfg = Release|Any CPU
+		{EB302A25-BA11-47FE-9A8E-93487D25E280}.Release|x64.Build.0 = Release|Any CPU
+		{F49FB33D-417D-4E7A-8FA7-7FA9A110222C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F49FB33D-417D-4E7A-8FA7-7FA9A110222C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F49FB33D-417D-4E7A-8FA7-7FA9A110222C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F49FB33D-417D-4E7A-8FA7-7FA9A110222C}.Debug|x64.Build.0 = Debug|Any CPU
+		{F49FB33D-417D-4E7A-8FA7-7FA9A110222C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F49FB33D-417D-4E7A-8FA7-7FA9A110222C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F49FB33D-417D-4E7A-8FA7-7FA9A110222C}.Release|x64.ActiveCfg = Release|Any CPU
+		{F49FB33D-417D-4E7A-8FA7-7FA9A110222C}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

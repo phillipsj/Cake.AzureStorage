@@ -6,7 +6,7 @@ using Cake.Core.IO;
 
 namespace Cake.AzureStorage {
     /// <summary>
-    /// Contains functionality for workign with Azure Storage
+    /// Contains functionality for working with Azure Storage
     /// </summary>
     [CakeAliasCategory("AzureStorage")]
     public static class AzureStorageAlias {

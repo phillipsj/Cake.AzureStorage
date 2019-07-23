@@ -74,3 +74,10 @@ packages
 Thumbs.db
 tools
 src/.idea/
+
+.vscode
+
+# Cake - C# Make
+tools/*
+!tools/packages.config
+BuildArtifacts
