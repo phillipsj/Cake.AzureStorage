@@ -1,4 +1,4 @@
-#load nuget:https://www.myget.org/F/cake-contrib/api/v2?package=Cake.Recipe&prerelease
+#load nuget:?package=Cake.Recipe&version=1.0.0
 
 Environment.SetVariableNames();
 
@@ -6,9 +6,13 @@ BuildParameters.SetParameters(context: Context,
                             buildSystem: BuildSystem,
                             sourceDirectoryPath: "./src",
                             title: "Cake.AzureStorage",
-                            repositoryOwner: "RadioSystems",
+                            repositoryOwner: "cake-contrib",
                             repositoryName: "Cake.AzureStorage",
-                            appVeyorAccountName: "RadioSystems");
+                            appVeyorAccountName: "cakecontrib",
+                            shouldRunDupFinder: false,
+                            shouldRunInspectCode: false,
+                            shouldRunGitVersion: DirectoryExists(".git"), // This would allow building even without using a git repository
+                            shouldRunDotNetCorePack: true);
 
 BuildParameters.PrintParameters(Context);
 
@@ -18,4 +22,4 @@ ToolSettings.SetToolSettings(context: Context,
                             testCoverageFilter: "+[*]* -[xunit.*]* -[Cake.Core]* -[Cake.Testing]* -[*.Tests]* ",
                             testCoverageExcludeByAttribute: "*.ExcludeFromCodeCoverage*",
                             testCoverageExcludeByFile: "*/*Designer.cs;*/*.g.cs;*/*.g.i.cs");
-Build.Run();
+Build.RunDotNetCore();

@@ -24,7 +24,7 @@
         /// </summary>
         public string BlobName { get; set; }
         /// <summary>
-        /// Gets or sets wethere to use HTTPS or not, 
+        /// Gets or sets whether to use HTTPS or not, 
         /// </summary>
         /// <value>
         ///     <c>true</c> to use HTTPS, default; otherwise, <c>false</c>.

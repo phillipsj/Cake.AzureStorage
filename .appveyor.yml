@@ -23,4 +23,4 @@ branches:
 #---------------------------------#
 cache:
 - Source\packages -> Source\**\packages.config
-- tools -> setup.cake
+- tools -> recipe.cake
