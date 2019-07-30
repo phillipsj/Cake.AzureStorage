@@ -1,35 +1,36 @@
 ﻿using System;
 using Cake.Core;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using FluentAssertions;
 using NSubstitute;
+using Xunit;
 
 namespace Cake.AzureStorage.Tests {
-    public class AzureStorageAliasesTests {
-        [TestClass]
+    public sealed class AzureStorageAliasesTests {
         public class UploadFileToBlobAliasTests {
-            [TestMethod]
+            [Fact]
             public void ShouldThrowIfContextIsNull() {
                 // When
-                var result = Assert.ThrowsException<ArgumentNullException>(() =>
+                var result = Record.Exception(() => 
                     AzureStorageAlias.UploadFileToBlob(null, null, null));
 
                 // Then
-                Assert.AreEqual("context", result.ParamName);
+                result.Should().BeOfType<ArgumentNullException>().Subject.ParamName.Should().Equals("context");
             }
 
-            [TestMethod]
+            [Fact]
             public void ShouldThrowIfSettingsAreNull() {
                 // Given 
                 var context = Substitute.For<ICakeContext>();
+                
                 // When
-                var result = Assert.ThrowsException<ArgumentNullException>(() =>
+                var result = Record.Exception(() => 
                     AzureStorageAlias.UploadFileToBlob(context, null, null));
 
                 // Then
-                Assert.AreEqual("settings", result.ParamName);
+                result.Should().BeOfType<ArgumentNullException>().Subject.ParamName.Should().Equals("settings");
             }
 
-            [TestMethod]
+            [Fact]
             public void ShouldThrowIfFileToUploadIsNull() {
                 // Given 
                 var context = Substitute.For<ICakeContext>();
@@ -41,61 +42,62 @@ namespace Cake.AzureStorage.Tests {
                 };
 
                 // When
-                var result = Assert.ThrowsException<ArgumentNullException>(() =>
+                
+                var result = Record.Exception(() => 
                     AzureStorageAlias.UploadFileToBlob(context, settings, null));
 
                 // Then
-                Assert.AreEqual("fileToUpload", result.ParamName);
+                result.Should().BeOfType<ArgumentNullException>().Subject.ParamName.Should().Equals("fileToUpload");
             }
         }
 
-        [TestClass]
         public class DeleteBlobAliasTests {
-            [TestMethod]
+            [Fact]
             public void ShouldThrowIfContextIsNull() {
                 // When
-                var result = Assert.ThrowsException<ArgumentNullException>(() =>
+                var result = Record.Exception(() => 
                     AzureStorageAlias.DeleteBlob(null, null));
 
                 // Then
-                Assert.AreEqual("context", result.ParamName);
+                result.Should().BeOfType<ArgumentNullException>().Subject.ParamName.Should().Equals("context");
             }
 
-            [TestMethod]
+            [Fact]
             public void ShouldThrowIfSettingsAreNull() {
                 // Given 
                 var context = Substitute.For<ICakeContext>();
+                
                 // When
-                var result = Assert.ThrowsException<ArgumentNullException>(() =>
+                var result = Record.Exception(() => 
                     AzureStorageAlias.DeleteBlob(context, null));
 
+
                 // Then
-                Assert.AreEqual("settings", result.ParamName);
+                result.Should().BeOfType<ArgumentNullException>().Subject.ParamName.Should().Equals("settings");
             }
         }
 
-        [TestClass]
         public class DeleteBlobsByPrefixAliasTests {
-            [TestMethod]
+            [Fact]
             public void ShouldThrowIfContextIsNull() {
                 // When
-                var result = Assert.ThrowsException<ArgumentNullException>(() =>
+                var result = Record.Exception(() => 
                     AzureStorageAlias.DeleteBlobsByPrefix(null, null));
 
                 // Then
-                Assert.AreEqual("context", result.ParamName);
+                result.Should().BeOfType<ArgumentNullException>().Subject.ParamName.Should().Equals("context");
             }
 
-            [TestMethod]
+            [Fact]
             public void ShouldThrowIfSettingsAreNull() {
                 // Given 
                 var context = Substitute.For<ICakeContext>();
                 // When
-                var result = Assert.ThrowsException<ArgumentNullException>(() =>
+                var result = Record.Exception(() => 
                     AzureStorageAlias.DeleteBlobsByPrefix(context, null));
 
                 // Then
-                Assert.AreEqual("settings", result.ParamName);
+                result.Should().BeOfType<ArgumentNullException>().Subject.ParamName.Should().Equals("settings");
             }
         }
     }
