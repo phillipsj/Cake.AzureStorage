@@ -15,7 +15,7 @@
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/cake-contrib/Cake.AzureStorage</PackageProjectUrl>
     <PackageTags>Cake;Script;Build;Azure;Storage</PackageTags>
-    <RepositoryUrl>$(PackageProjectUrl)</RepositoryUrl>  
+    <RepositoryUrl>$(PackageProjectUrl).git</RepositoryUrl>  
     <RepositoryType>git</RepositoryType>  
   </PropertyGroup>
 
