@@ -14,7 +14,7 @@
     <PackageIconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/cake-contrib-medium.png</PackageIconUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/cake-contrib/Cake.AzureStorage</PackageProjectUrl>
-    <PackageTags>Cake;Script;Build;Azure;Storage</PackageTags>
+    <PackageTags>Cake;Script;Build;Azure;Storage;cake-addin</PackageTags>
     <RepositoryUrl>$(PackageProjectUrl).git</RepositoryUrl>  
     <RepositoryType>git</RepositoryType>  
   </PropertyGroup>
