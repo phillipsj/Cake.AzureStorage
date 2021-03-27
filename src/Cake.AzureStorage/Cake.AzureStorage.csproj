@@ -1,26 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  
+
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PreserveCompilationContext>true</PreserveCompilationContext>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
-  
+
   <PropertyGroup>
-    <Authors>Radio Systems Corporation, Jamie Phillips</Authors>
-    <Copyright>Copyright © 2017-$([System.DateTime]::Now.Year) - Radio Systems Corporation, Jamie Phillips</Copyright>
+    <Authors>RadioSystems;cphill11;augustoproiete</Authors>
+    <Copyright>Copyright © 2017-$([System.DateTime]::Now.Year) Cake Contributions</Copyright>
     <Description>Cake Addin for working with Azure Storage.</Description>
     <PackageIconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/cake-contrib-medium.png</PackageIconUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/cake-contrib/Cake.AzureStorage</PackageProjectUrl>
-    <PackageTags>Cake;Script;Build;Azure;Storage</PackageTags>
-    <RepositoryUrl>$(PackageProjectUrl).git</RepositoryUrl>  
-    <RepositoryType>git</RepositoryType>  
+    <PackageTags>Cake;Script;Build;Azure;Storage;cake-addin</PackageTags>
+    <RepositoryUrl>$(PackageProjectUrl).git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Cake.Core" Version="0.33.0" PrivateAssets="All" />    
+    <PackageReference Include="Cake.Core" Version="1.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Storage.Blob" Version="10.0.3" PrivateAssets="All" />
     <PackageReference Include="ILRepack.MSBuild.Task" Version="2.0.13" PrivateAssets="All"  />
   </ItemGroup>
@@ -29,23 +29,23 @@
     <PropertyGroup>
       <WorkingDirectory>$(MSBuildThisFileDirectory)bin\$(Configuration)\$(TargetFramework)</WorkingDirectory>
     </PropertyGroup>
-		<ItemGroup>
-			<InputAssemblies Include="Newtonsoft.Json.dll" />
-			<InputAssemblies Include="Microsoft.Azure.KeyVault.Core.dll" />
-			<InputAssemblies Include="Microsoft.Azure.Storage.Blob.dll" />
-			<InputAssemblies Include="Microsoft.Azure.Storage.Common.dll" />
-		</ItemGroup>
     <ItemGroup>
-	    <!-- Dot not internalize any types inside this assembly -->
+      <InputAssemblies Include="Newtonsoft.Json.dll" />
+      <InputAssemblies Include="Microsoft.Azure.KeyVault.Core.dll" />
+      <InputAssemblies Include="Microsoft.Azure.Storage.Blob.dll" />
+      <InputAssemblies Include="Microsoft.Azure.Storage.Common.dll" />
+    </ItemGroup>
+    <ItemGroup>
+      <!-- Dot not internalize any types inside this assembly -->
       <InternalizeExcludeAssemblies Include="Cake.Core.dll" />
     </ItemGroup>
     <Message Text="MERGING: @(InputAssemblies->'%(Filename)') into $(OutputAssembly)" Importance="High" />
-		<ILRepack 
-      OutputType="$(OutputType)" 
-      MainAssembly="$(AssemblyName).dll" 
-      OutputAssembly="$(AssemblyName).dll" 
-      InputAssemblies="@(InputAssemblies)" 
-      InternalizeExcludeAssemblies="@(InternalizeExcludeAssemblies)" 
+    <ILRepack
+      OutputType="$(OutputType)"
+      MainAssembly="$(AssemblyName).dll"
+      OutputAssembly="$(AssemblyName).dll"
+      InputAssemblies="@(InputAssemblies)"
+      InternalizeExcludeAssemblies="@(InternalizeExcludeAssemblies)"
       WorkingDirectory="$(WorkingDirectory)" />
-  </Target>  
+  </Target>
 </Project>
